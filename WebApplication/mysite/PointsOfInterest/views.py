@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("Hello, world. You're at our exciting site about Points of Interest")
+    template = loader.get_template('sablona/index.html')
+    
+    context = RequestContext(request)
+    return HttpResponse(template.render(context))
 
 # Create your views here.
